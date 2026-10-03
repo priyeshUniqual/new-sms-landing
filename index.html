@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spark My Sport | Turn Game Film Into Player Intelligence</title>
+<meta name="description" content="Spark My Sport transforms basketball game film into Player Intelligence: AI-powered stats, highlights, game analytics, scouting evaluations, and development insights in one platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.hp-hero{ padding: 64px 0 76px; border-bottom: 1px solid var(--line); }
+.hp-hero .wrap{ display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
+.hp-hero h1{ font-size:clamp(42px,6vw,72px); line-height:1.03; margin:0 0 18px; }
+.hp-tri{ font-family:var(--font-mono); font-weight:600; font-size:clamp(15px,1.6vw,18px); text-transform:uppercase; letter-spacing:.04em; margin:0 0 18px; color:var(--ink); }
+.hp-tri span{ color:var(--accent); }
+.hp-hero .lead{ margin-bottom:30px; }
+
+.hp-court{ position:relative; background: var(--black-metal); border:1px solid var(--court-line); border-radius:10px; padding:20px; }
+.hp-court svg{ width:100%; height:auto; display:block; }
+.hp-court .rim{ fill:none; stroke:#4a4a4a; stroke-width:2; }
+.hp-shot{ opacity:0; animation:hpPop .35s ease-out forwards; transform-box: fill-box; transform-origin: center; }
+.hp-make{ fill: var(--accent); }
+.hp-miss{ fill:none; stroke:#fff; stroke-width:2; }
+@keyframes hpPop{ from{ opacity:0; transform:scale(.3);} to{ opacity:1; transform:scale(1);} }
+.hp-readout{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--court-line); margin-top:14px; padding-top:14px; }
+.hp-readout div{ padding-right:8px; }
+.hp-readout strong{ display:block; font-family:var(--font-display); font-weight:700; font-size:28px; line-height:1; color:var(--paper); }
+.hp-readout span{ font-size:11.5px; color:rgba(255,253,245,0.55); font-weight:600; font-family:var(--font-mono); }
+.hp-court-cap{ display:flex; justify-content:space-between; font-size:12.5px; color:rgba(255,253,245,0.6); font-weight:600; margin-bottom:12px; font-family:var(--font-mono); }
+.hp-court-cap b{ color:var(--paper); font-weight:700; }
+.hp-legend{ display:flex; gap:14px; }
+.hp-legend i{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:-1px; }
+.hp-legend .m{ background:var(--accent); } .hp-legend .x{ border:2px solid #fff; }
+
+.hp-section{ padding:76px 0; border-bottom:1px solid var(--line); }
+.hp-section:nth-of-type(even){ background: var(--panel-metal); }
+.hp-head{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end; margin-bottom:44px; }
+.hp-kicker{ font-family:var(--font-mono); font-weight:600; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+
+.hp-contrast{ margin-bottom:44px; display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.hp-contrast p{ font-family:var(--font-display); font-weight:600; font-size:clamp(22px,2.6vw,32px); line-height:1.15; padding:26px 26px 26px 0; }
+.hp-contrast p:first-child{ color:var(--ink-dimmer); text-decoration:line-through; text-decoration-color:var(--accent); text-decoration-thickness:3px; }
+.hp-contrast p:last-child{ border-left:1px solid var(--line); padding-left:26px; }
+
+.hp-pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.hp-pillar{ background:var(--paper); padding:28px 26px 30px; }
+.hp-pillar h3{ margin:0 0 8px; font-size:22px; }
+.hp-pillar .hp-line{ font-size:16px; font-weight:500; color:var(--ink-dim); margin-bottom:18px; }
+.hp-tags{ display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0; }
+.hp-tags li{ font-family:var(--font-mono); font-size:12.5px; font-weight:600; color:var(--ink-dim); border:1px solid var(--line); padding:5px 10px; border-radius:3px; }
+
+.hp-steps{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(4,1fr); border-top:3px solid var(--accent); }
+.hp-step{ padding:24px 22px 0 0; }
+.hp-step + .hp-step{ padding-left:22px; border-left:1px solid var(--line); }
+.hp-num{ font-family:var(--font-display); font-weight:700; font-size:52px; line-height:.8; color:var(--accent); margin-bottom:14px; }
+.hp-step h3{ font-size:19px; margin:0 0 10px; }
+.hp-step p{ color:var(--ink-dim); font-size:14.5px; margin:0 0 16px; line-height:1.55; }
+.hp-out{ font-family:var(--font-mono); font-weight:600; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); }
+.hp-out::after{ content:" \2192"; color:var(--accent); }
+
+.hp-story .wrap{ display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:start; }
+.hp-story-intro{ position:sticky; top:100px; }
+.hp-story-intro p{ margin-top:18px; }
+.hp-chain{ list-style:none; padding:0; margin:0; position:relative; }
+.hp-chain::before{ content:""; position:absolute; left:11px; top:20px; bottom:20px; width:2px; background:linear-gradient(var(--line), var(--accent)); }
+.hp-chain li{ position:relative; padding:10px 0 10px 44px; font-family:var(--font-display); font-weight:600; font-size:clamp(22px,3vw,34px); line-height:1.1; color:var(--ink-dimmer); }
+.hp-chain li::before{ content:""; position:absolute; left:4px; top:50%; width:14px; height:14px; margin-top:-7px; border:2px solid var(--ink-dimmer); background:var(--paper); border-radius:50%; }
+.hp-chain li:nth-child(n+4){ color:var(--ink-dim); }
+.hp-chain li:nth-child(n+4)::before{ border-color:var(--ink-dim); }
+.hp-chain li:nth-child(n+6){ color:var(--ink); }
+.hp-chain li:nth-child(n+6)::before{ border-color:var(--ink); }
+.hp-chain li:last-child{ color:var(--accent); }
+.hp-chain li:last-child::before{ background:var(--accent); border-color:var(--accent); }
+
+.hp-eco{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.hp-eco article{ background:var(--paper); padding:26px 24px 30px; }
+.hp-eco h3{ font-size:22px; margin:0 0 10px; }
+.hp-eco h3::before{ content:""; display:block; width:26px; height:4px; background:var(--accent); margin-bottom:16px; }
+.hp-eco p{ color:var(--ink-dim); font-size:14.5px; line-height:1.55; }
+
+.hp-film{ background: var(--black-metal); color: var(--paper); border-bottom:1px solid var(--court-line); }
+.hp-film .hp-kicker{ color: var(--accent); }
+.hp-film .hp-big{ font-family:var(--font-display); font-weight:700; font-size:clamp(28px,4vw,48px); line-height:1.05; max-width:22ch; margin:0 0 18px; }
+.hp-film .hp-big span{ color:rgba(255,253,245,0.45); }
+.hp-film .lead{ color:rgba(255,253,245,0.7); }
+.hp-flow{ display:flex; flex-wrap:wrap; margin-top:44px; border:1px solid rgba(255,253,245,0.18); list-style:none; padding:0; }
+.hp-flow li{ flex:1 1 0; min-width:140px; padding:20px 16px; font-family:var(--font-display); font-weight:600; font-size:19px; letter-spacing:.02em; border-right:1px solid rgba(255,253,245,0.18); }
+.hp-flow li:last-child{ border-right:0; background: var(--red-metal); }
+.hp-flow li small{ display:block; font-family:var(--font-mono); font-weight:500; font-size:11.5px; text-transform:uppercase; color:rgba(255,253,245,0.5); margin-bottom:4px; }
+.hp-flow li:last-child small{ color:#ffd1da; }
+
+.hp-seen .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+.hp-seen h2{ font-size:clamp(34px,4.8vw,58px); }
+.hp-seen .lead{ margin:20px 0 28px; }
+.hp-profile{ border:1px solid var(--court-line); background: var(--black-metal); border-radius:10px; overflow:hidden; color:var(--paper); }
+.hp-profile-top{ display:flex; align-items:center; gap:14px; padding:20px; border-bottom:1px solid rgba(255,253,245,0.15); }
+.hp-avatar{ width:52px; height:52px; border-radius:50%; background:rgba(255,253,245,0.08); border:2px solid var(--accent); display:grid; place-items:center; font-family:var(--font-display); font-weight:700; font-size:19px; flex:none; }
+.hp-profile-top strong{ font-family:var(--font-display); font-weight:600; font-size:19px; display:block; line-height:1.2; }
+.hp-profile-top span{ font-size:12.5px; color:rgba(255,253,245,0.55); font-family:var(--font-mono); }
+.hp-layers{ list-style:none; margin:0; padding:0; }
+.hp-layers li{ display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid rgba(255,253,245,0.12); font-weight:500; font-size:14.5px; }
+.hp-layers li:last-child{ border-bottom:0; }
+.hp-layers li span{ font-size:12px; color:rgba(255,253,245,0.5); font-family:var(--font-mono); }
+.hp-layers li.grade span{ color:var(--accent); font-family:var(--font-display); font-weight:700; font-size:17px; }
+.hp-profile-foot{ padding:16px 20px; border-top:1px solid rgba(255,253,245,0.15); font-family:var(--font-mono); font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:rgba(255,253,245,0.75); }
+
+.hp-ai{ background: var(--red-metal); border-bottom:1px solid var(--line); }
+.hp-ai .wrap{ display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:end; padding:64px 28px; }
+.hp-ai h2{ color:#fff; font-size:clamp(30px,4vw,48px); }
+.hp-ai .lead{ color:#ffe3e9; margin-top:16px; }
+.hp-ai .hp-path{ font-family:var(--font-display); font-weight:600; font-size:clamp(18px,2vw,24px); text-transform:uppercase; margin-top:22px; letter-spacing:.02em; color:#fff; }
+.hp-ai .hp-path i{ font-style:normal; color:#3a0709; padding:0 6px; }
+.hp-ai .hp-btns{ display:flex; justify-content:flex-end; }
+
+@media (max-width:980px){
+  .hp-hero .wrap, .hp-head, .hp-story .wrap, .hp-seen .wrap, .hp-ai .wrap{ grid-template-columns:1fr; }
+  .hp-story-intro{ position:static; }
+  .hp-steps{ grid-template-columns:1fr 1fr; border-top:0; }
+  .hp-step, .hp-step + .hp-step{ padding:22px 20px 22px 0; border-left:0; border-top:3px solid var(--accent); }
+  .hp-step:nth-child(even){ padding-left:20px; border-left:1px solid var(--line); }
+  .hp-pillars, .hp-eco{ grid-template-columns:1fr 1fr; }
+  .hp-ai .hp-btns{ justify-content:flex-start; }
+}
+@media (max-width:640px){
+  .hp-section{ padding:52px 0; }
+  .hp-hero{ padding:36px 0 48px; }
+  .hp-contrast{ grid-template-columns:1fr; }
+  .hp-contrast p{ padding:20px 0; }
+  .hp-contrast p:last-child{ border-left:0; border-top:1px solid var(--line); padding-left:0; }
+  .hp-pillars, .hp-eco, .hp-steps{ grid-template-columns:1fr; }
+  .hp-step:nth-child(even){ padding-left:0; border-left:0; }
+  .hp-flow li{ flex-basis:100%; border-right:0; border-bottom:1px solid rgba(255,253,245,0.18); }
+  .hp-flow li:last-child{ border-bottom:0; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="dot"></span>SPARK MY SPORT</a><button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button><div class="nav-menu" id="nav-menu"><nav class="links"><a href="index.html" class="active">Home</a><a href="player.html">Player</a><a href="coach.html">Coach</a><a href="recruit.html">Recruit</a><a href="our-story.html">Our Story</a><a href="why-us.html">Why Us</a><a href="pricing.html">Pricing</a></nav><div class="nav-actions">
+      <a href="https://stream.sparkmysport.com/login" class="btn btn-ghost">Login</a>
+      <a href="pricing.html" class="btn btn-primary">Get Started</a>
+    </div></div>
+  </div>
+</header>
+
+<section class="hp-hero">
+  <div class="wrap">
+    <div>
+      <h1>Turn game film into player intelligence</h1>
+      <p class="hp-tri">Analyze the game<span>.</span> Understand the player<span>.</span> Develop the athlete<span>.</span></p>
+      <p class="lead">Spark My Sport transforms basketball game film into Player Intelligence: combining AI-powered stats, highlights, game analytics, scouting evaluations, and development insights in one platform.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="pricing.html">Get Started</a>
+        <a class="btn btn-ghost" href="#how">Watch How It Works</a>
+      </div>
+    </div>
+
+    <figure class="hp-court" aria-label="Example shot chart generated from game film">
+      <div class="hp-court-cap"><b>#23 &middot; Shot Chart</b><span class="hp-legend"><span><i class="m"></i>Make</span><span><i class="x"></i>Miss</span></span></div>
+      <svg viewBox="0 0 500 400" role="img" aria-hidden="true">
+        <rect x="1" y="1" width="498" height="398" class="rim"/>
+        <rect x="170" y="1" width="160" height="190" class="rim"/>
+        <circle cx="250" cy="191" r="60" class="rim"/>
+        <path d="M30 1 V140 A 225 225 0 0 0 470 140 V1" class="rim"/>
+        <line x1="220" y1="42" x2="280" y2="42" class="rim" style="stroke:#666;stroke-width:3"/>
+        <circle cx="250" cy="55" r="12" class="rim" style="stroke:#c22a2a;stroke-width:3"/>
+        <path d="M190 400 A 60 60 0 0 1 310 400" class="rim"/>
+        <g>
+          <circle class="hp-shot hp-make" cx="250" cy="80" r="8" style="animation-delay:.2s"/>
+          <circle class="hp-shot hp-make" cx="232" cy="100" r="8" style="animation-delay:.3s"/>
+          <circle class="hp-shot hp-miss" cx="270" cy="110" r="7" style="animation-delay:.4s"/>
+          <circle class="hp-shot hp-make" cx="205" cy="160" r="8" style="animation-delay:.5s"/>
+          <circle class="hp-shot hp-make" cx="300" cy="175" r="8" style="animation-delay:.6s"/>
+          <circle class="hp-shot hp-miss" cx="140" cy="120" r="7" style="animation-delay:.7s"/>
+          <circle class="hp-shot hp-make" cx="60" cy="60" r="8" style="animation-delay:.8s"/>
+          <circle class="hp-shot hp-miss" cx="445" cy="70" r="7" style="animation-delay:.9s"/>
+          <circle class="hp-shot hp-make" cx="250" cy="300" r="8" style="animation-delay:1s"/>
+          <circle class="hp-shot hp-miss" cx="360" cy="270" r="7" style="animation-delay:1.1s"/>
+          <circle class="hp-shot hp-make" cx="150" cy="270" r="8" style="animation-delay:1.2s"/>
+          <circle class="hp-shot hp-miss" cx="330" cy="130" r="7" style="animation-delay:1.3s"/>
+          <circle class="hp-shot hp-make" cx="262" cy="92" r="8" style="animation-delay:1.4s"/>
+        </g>
+      </svg>
+      <div class="hp-readout">
+        <div><strong>18</strong><span>Points</span></div>
+        <div><strong>8/13</strong><span>FG</span></div>
+        <div><strong>6</strong><span>Clips</span></div>
+        <div><strong style="color:var(--accent)">B+</strong><span>Game Grade</span></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="hp-section" aria-labelledby="more-title">
+  <div class="wrap">
+    <div class="hp-kicker">More Than Stats &amp; Highlights</div>
+    <div class="hp-contrast reveal">
+      <p>Other platforms tell you what happened.</p>
+      <p id="more-title">Spark My Sport helps you understand what it means, and what to do next.</p>
+    </div>
+    <div class="hp-pillars reveal">
+      <article class="hp-pillar">
+        <h3>Player Intelligence</h3>
+        <p class="hp-line">Build a complete picture of every athlete.</p>
+        <ul class="hp-tags"><li>Player Profiles</li><li>Scouting Grades</li><li>Evaluations</li><li>Rankings</li><li>Performance Trends</li><li>Game History</li></ul>
+      </article>
+      <article class="hp-pillar">
+        <h3>Game Intelligence</h3>
+        <p class="hp-line">Turn every game into actionable data.</p>
+        <ul class="hp-tags"><li>AI-Powered Stats</li><li>Shot Charts</li><li>Game Analytics</li><li>Game Film</li><li>Player Clips</li><li>Highlights</li></ul>
+      </article>
+      <article class="hp-pillar">
+        <h3>Player Development</h3>
+        <p class="hp-line">Turn performance into improvement.</p>
+        <ul class="hp-tags"><li>Strengths &amp; Weaknesses</li><li>Film Review</li><li>Progress Tracking</li><li>Development Insights</li><li>Complete Player Journey</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="hp-section" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="hp-head">
+      <h2 id="how-title">From game film to player development</h2>
+      <p class="lead">Four steps from the final buzzer to a player who knows exactly what to work on.</p>
+    </div>
+    <ol class="hp-steps reveal">
+      <li class="hp-step"><div class="hp-num">1</div><h3>Record or Upload</h3><p>Stream games live or upload existing game film from your phone, camera, or video system.</p><div class="hp-out">Game Film</div></li>
+      <li class="hp-step"><div class="hp-num">2</div><h3>Spark My Sport AI</h3><p>Our platform analyzes the game and transforms video into structured basketball intelligence.</p><div class="hp-out">AI Analysis</div></li>
+      <li class="hp-step"><div class="hp-num">3</div><h3>Get Player &amp; Game Intelligence</h3><p>Automatically organize stats, clips, shot charts, highlights, player evaluations, and performance data.</p><div class="hp-out">Intelligence</div></li>
+      <li class="hp-step"><div class="hp-num">4</div><h3>Develop &amp; Showcase</h3><p>Players understand their performance, improve their game, build their profile, and showcase themselves to coaches and scouts.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="hp-section hp-story" aria-labelledby="story-title">
+  <div class="wrap">
+    <div class="hp-story-intro">
+      <h2 id="story-title">One game. A complete performance story.</h2>
+      <p class="lead">Every game you upload builds on the last, from raw film all the way to a profile coaches and scouts can trust.</p>
+    </div>
+    <ol class="hp-chain reveal">
+      <li>Game Film</li>
+      <li>AI Stats + Shot Charts</li>
+      <li>Player Highlights</li>
+      <li>Scouting Evaluation</li>
+      <li>Spark My Sport Scouting Grade</li>
+      <li>Development Insights</li>
+      <li>Player Profile</li>
+    </ol>
+  </div>
+</section>
+
+<section class="hp-section" id="who" aria-labelledby="who-title">
+  <div class="wrap">
+    <div class="hp-head">
+      <h2 id="who-title">Built for the entire basketball ecosystem</h2>
+      <p class="lead">One platform. Every role around the athlete gets what they need from the same game.</p>
+    </div>
+    <div class="hp-eco reveal">
+      <article><h3>Players</h3><p>Understand your game. Build your profile. Showcase your performance. Track your development.</p></article>
+      <article><h3>Parents</h3><p>See more than points and highlights. Understand how your athlete is performing and developing.</p></article>
+      <article><h3>Coaches</h3><p>Turn film into actionable information for player development and team performance.</p></article>
+      <article><h3>Scouts</h3><p>Discover players and review film, performance data, evaluations, and scouting insights from one place.</p></article>
+      <article><h3>Teams &amp; Clubs</h3><p>Create a digital performance platform for every athlete in your organization.</p></article>
+      <article><h3>Events &amp; Showcases</h3><p>Transform tournament games into player profiles, statistics, highlights, evaluations, and recruiting opportunities.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="hp-film" aria-labelledby="film-title">
+  <div class="wrap" style="padding-top:76px;padding-bottom:76px;">
+    <div class="hp-kicker" id="film-title">Your Game Film Should Do More</div>
+    <p class="hp-big">A basketball game contains thousands of moments. <span>Most of them never get used.</span></p>
+    <p class="lead">Spark My Sport transforms those moments into information players, parents, coaches, and scouts can actually use.</p>
+    <ol class="hp-flow reveal">
+      <li><small>Step 1</small>Record</li>
+      <li><small>Step 2</small>Analyze</li>
+      <li><small>Step 3</small>Understand</li>
+      <li><small>Step 4</small>Develop</li>
+      <li><small>Step 5</small>Showcase</li>
+    </ol>
+  </div>
+</section>
+
+<section class="hp-section hp-seen" id="seen" aria-labelledby="seen-title">
+  <div class="wrap">
+    <div>
+      <h2 id="seen-title">Every player deserves to be seen</h2>
+      <p class="lead">Talent shouldn't be limited by who is watching from the sidelines. Spark My Sport gives athletes a platform to build a performance history: one player, one profile, a growing story of their game.</p>
+      <div class="hero-cta"><a class="btn btn-primary" href="pricing.html">Build Your Player Profile</a></div>
+    </div>
+    <div class="hp-profile reveal" aria-label="What a player profile combines">
+      <div class="hp-profile-top">
+        <div class="hp-avatar" aria-hidden="true">23</div>
+        <div><strong>Your Player Profile</strong><span>Guard &middot; Class of 2028</span></div>
+      </div>
+      <ul class="hp-layers">
+        <li>Game Film <span>Every Game</span></li>
+        <li>Stats <span>AI-Powered</span></li>
+        <li>Highlights <span>Auto-Clipped</span></li>
+        <li>Shot Charts <span>Per Game</span></li>
+        <li>Scouting Evaluations <span>Expert Review</span></li>
+        <li class="grade">Scouting Grade <span>Patented</span></li>
+      </ul>
+      <div class="hp-profile-foot">One Player. One Profile.</div>
+    </div>
+  </div>
+</section>
+
+<section class="hp-ai" id="start" aria-labelledby="ai-title">
+  <div class="wrap">
+    <div>
+      <h2 id="ai-title">Powered by Spark My Sport AI</h2>
+      <p class="lead">Upload or stream your game and let Spark My Sport turn the film into actionable basketball intelligence.</p>
+      <p class="hp-path">Game Intelligence<i>&rarr;</i>Player Intelligence<i>&rarr;</i>Player Development</p>
+    </div>
+    <div class="hp-btns"><a class="btn btn-primary" href="pricing.html" style="background:#fff;color:var(--accent);border-color:#fff;">Start With Your Game Film</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-support"><p>Questions or need help?</p><p>Email us at <a href="mailto:support@sparkmysport.com">support@sparkmysport.com</a></p></div><div class="wrap foot-inner">
+    <div class="logo"><span class="dot"></span>SPARK MY SPORT</div>
+    <nav class="foot-links"><a href="player.html">Player</a><a href="coach.html">Coach</a><a href="recruit.html">Recruit</a><a href="our-story.html">Our Story</a><a href="why-us.html">Why Us</a><a href="pricing.html">Pricing</a><a href="mailto:support@sparkmysport.com">Support</a></nav>
+    <div class="mono">ANALYZE &middot; DEVELOP &middot; GET RECRUITED</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
