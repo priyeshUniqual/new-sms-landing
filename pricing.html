@@ -1,283 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plans & Pricing | Spark My Sport</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="icon" type="image/png" href="images/latest-logo.png">
   <link rel="apple-touch-icon" href="images/latest-logo.png">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .pricing-jump-nav{
-      position:sticky;
-      top:73px;
-      z-index:40;
-      background:rgba(255,253,245,.97);
-      border-bottom:1px solid var(--line);
-      backdrop-filter:blur(10px);
+    .pricing-jump-nav {
+      position: sticky;
+      top: 73px;
+      z-index: 40;
+      background: rgba(255, 253, 245, .97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
-    .pricing-jump-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;
-      padding:14px 0;
+
+    .pricing-jump-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 14px 0;
     }
-    .pricing-jump-grid a{
-      justify-content:center;
-      text-align:center;
-      min-height:46px;
+
+    .pricing-jump-grid a {
+      justify-content: center;
+      text-align: center;
+      min-height: 46px;
     }
-    .pricing-category{
-      padding:72px 0;
-      border-bottom:1px solid var(--line);
-      scroll-margin-top:155px;
+
+    .pricing-category {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 155px;
     }
-    .pricing-category:nth-of-type(even){
-      background:var(--panel);
+
+    .pricing-category:nth-of-type(even) {
+      background: var(--panel);
     }
-    .pricing-category .section-head{
-      margin-bottom:32px;
+
+    .pricing-category .section-head {
+      margin-bottom: 32px;
     }
-    .pricing-category .section-head p{
-      max-width:760px;
+
+    .pricing-category .section-head p {
+      max-width: 760px;
     }
-    .family-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:22px;
-      align-items:stretch;
+
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      align-items: stretch;
     }
-    .single-plan-wrap{
-      max-width:760px;
+
+    .single-plan-wrap {
+      max-width: 760px;
     }
-    .single-plan-wrap .price-card{
-      width:100%;
+
+    .single-plan-wrap .price-card {
+      width: 100%;
     }
-    .price-card{
-      height:100%;
-      display:flex;
-      flex-direction:column;
+
+    .price-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
-    .price-card .plan-list{
-      flex:1;
+
+    .price-card .plan-list {
+      flex: 1;
     }
-    .billing-note{
-      margin:8px 0 16px;
-      font-family:'IBM Plex Mono',monospace;
-      font-size:12px;
-      line-height:1.5;
+
+    .billing-note {
+      margin: 8px 0 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
     }
-    .billing-note-prominent{
-      margin:14px 0 18px;
-      padding:14px 16px;
-      background:var(--red-metal);
-      border-radius:6px;
-      font-family:'Oswald',sans-serif;
-      font-size:15px;
-      line-height:1.4;
-      color:var(--on-accent);
-      letter-spacing:0.01em;
+
+    .billing-note-prominent {
+      margin: 14px 0 18px;
+      padding: 14px 16px;
+      background: var(--red-metal);
+      border-radius: 6px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--on-accent);
+      letter-spacing: 0.01em;
     }
-    .plan-flow{
-      margin:0 0 18px;
-      font-family:'IBM Plex Mono',monospace;
-      font-size:12.5px;
+
+    .plan-flow {
+      margin: 0 0 18px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
       color: var(--ink-dim);
-      line-height:1.6;
+      line-height: 1.6;
     }
-    .plan-flow span{ color: var(--accent); margin:0 4px; }
-        .plan-cta-email{ min-height:46px; }
-    .plan-cta-static{ cursor:default; }
-    .plan-cta-static:hover{ background:var(--red-metal); border-color:var(--accent); }
-    .plan-cta-email{
-      font-size:12px;
-      letter-spacing:0;
-      text-transform:none;
-      padding-left:10px;
-      padding-right:10px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:clip;
+
+    .plan-flow span {
+      color: var(--accent);
+      margin: 0 4px;
     }
-    @media(min-width:981px) and (max-width:1240px){ .plan-cta-email{ font-size:11px; padding-left:6px; padding-right:6px; } }
-    @media(max-width:980px){ .plan-cta-email{ font-size:14px; } }
-    .pricing-intro{
-      padding:72px 0 46px;
-      border-bottom:1px solid var(--line);
+
+    .plan-cta-email {
+      min-height: 46px;
     }
-    @media(max-width:980px){
-      .family-grid{grid-template-columns:1fr;}
-      .single-plan-wrap{max-width:none;}
+
+    .plan-cta-static {
+      cursor: default;
     }
-    @media(max-width:820px){
-      .pricing-jump-nav{top:70px;}
-      .pricing-jump-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:8px;
-        padding:10px 0;
+
+    .plan-cta-static:hover {
+      background: var(--red-metal);
+      border-color: var(--accent);
+    }
+
+    .plan-cta-email {
+      font-size: 12px;
+      letter-spacing: 0;
+      text-transform: none;
+      padding-left: 10px;
+      padding-right: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    @media(min-width:981px) and (max-width:1240px) {
+      .plan-cta-email {
+        font-size: 11px;
+        padding-left: 6px;
+        padding-right: 6px;
       }
-      .pricing-jump-grid a{
-        padding:10px 8px;
-        font-size:10.5px;
-        letter-spacing:.06em;
+    }
+
+    @media(max-width:980px) {
+      .plan-cta-email {
+        font-size: 14px;
       }
-      .pricing-category{scroll-margin-top:185px;padding:52px 0;}
-      .pricing-intro{padding:52px 0 34px;}
+    }
+
+    .pricing-intro {
+      padding: 72px 0 46px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media(max-width:980px) {
+      .family-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .single-plan-wrap {
+        max-width: none;
+      }
+    }
+
+    @media(max-width:820px) {
+      .pricing-jump-nav {
+        top: 70px;
+      }
+
+      .pricing-jump-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px 0;
+      }
+
+      .pricing-jump-grid a {
+        padding: 10px 8px;
+        font-size: 10.5px;
+        letter-spacing: .06em;
+      }
+
+      .pricing-category {
+        scroll-margin-top: 185px;
+        padding: 52px 0;
+      }
+
+      .pricing-intro {
+        padding: 52px 0 34px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="logo"><img src="images/latest-logo.png" alt="Spark My Sport" class="logo-mark">SPARK MY SPORT</a><button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button><div class="nav-menu" id="nav-menu"><nav class="links"><a href="index.html">Home</a><a href="player.html">Player</a><a href="coach.html">Coach</a><a href="recruit.html">Recruit</a><a href="our-story.html">Our Story</a><a href="why-us.html">Why Us</a><a href="pricing.html" class="active">Pricing</a></nav><div class="nav-actions">
-      <a href="https://stream.sparkmysport.com/login" class="btn btn-ghost">Login</a>
-      <a href="#family" class="btn btn-primary">Choose a Plan</a>
-    </div></div></div>
-</header>
-
-
-
-<section class="pricing-intro">
-  <div class="wrap">
-    <div class="hero-video-grid">
-      <div class="hero-copy">
-        <div class="eyebrow">Plans & Pricing</div>
-        <h1>Choose who you are.<br><em>See only what fits.</em></h1>
-        <p class="lead">Follow your event, work your own film, or let AI turn it into stats and highlights. Compare every plan below, from a free player profile to team tools.</p>
-        <p class="support-note">Not sure which plan fits, or have a billing question? Email <a href="mailto:support@sparkmysport.com">support@sparkmysport.com</a>.</p>
-      </div>
-      <div class="hero-image">
-        <img src="images/growth-cycle.png" alt="The Spark My Sport cycle: capture, analyze, highlight, teach and improve, share and recruit, develop and repeat.">
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><img src="images/latest-logo.png" alt="Spark My Sport" class="logo-mark">SPARK
+        MY SPORT</a><button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"
+        aria-controls="nav-menu"><span></span><span></span><span></span></button>
+      <div class="nav-menu" id="nav-menu">
+        <nav class="links"><a href="index.html">Home</a><a href="player.html">Player</a><a href="coach.html">Coach</a><a
+            href="recruit.html">Recruit</a><a href="our-story.html">Our Story</a><a href="why-us.html">Why Us</a><a
+            href="pricing.html" class="active">Pricing</a></nav>
+        <div class="nav-actions">
+          <a href="https://stream.sparkmysport.com/login" class="btn btn-ghost">Login</a>
+          <a href="#family" class="btn btn-primary">Choose a Plan</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="pricing-category" id="family">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Start Free. <em>Keep Building.</em></h2>
-      <p>Choose how you want to build your athlete's game, development, and story.</p>
-    </div>
 
-    <div class="family-grid">
-      <article class="price-card">
-        <div class="plan-for">FREE</div>
-        <h3>Event Athlete</h3>
-        <div class="price"><strong>$0</strong></div>
-        <p class="plan-summary">For athletes playing in a Spark My Sport–covered event.</p>
-        <h4>Included</h4>
-        <ul class="plan-list">
-          <li>Create your Player Profile</li>
-          <li>Limited-time access to event games &amp; stats</li>
-          <li>Keep games, stats &amp; highlights organized</li>
-          <li>Share your profile with coaches, scouts &amp; family</li>
-          <li>Share content on social media</li>
-        </ul>
-        <div class="btn btn-primary plan-cta plan-cta-static">Contact your Host</div>
-      </article>
 
-      <article class="price-card featured">
-        <div class="plan-for">FAMILY</div>
-        <h3>DIY Game Package</h3>
-        <div class="price"><strong>$49.99</strong><span>5-Game Package</span></div>
-        <div class="billing-note billing-note-prominent"><b>$49.99 for 5 Games. Buy More Anytime During the Season. No Monthly Subscription.</b></div>
-        <div class="plan-flow">Watch your game <span>→</span> Tag plays &amp; stats <span>→</span> AI does the rest</div>
-        <p class="plan-summary">Hands-on film workflow: bring in your own games and take the lead on tagging and stats, with AI assistance along the way.</p>
-        <h4>Included</h4>
-        <ul class="plan-list">
-          <li>Everything in Free</li>
-          <li>Five games per package</li>
-          <li>Self-service tagging and stats</li>
-          <li>AI assistance while tagging</li>
-          <li>Easy step-by-step instructions</li>
-        </ul>
-        <a href="https://stream.sparkmysport.com/login/register?mode=planSelection" class="btn btn-primary plan-cta">Start DIY + AI →</a>
-      </article>
-
-      <article class="price-card">
-        <div class="plan-for">TEAM</div>
-        <h3>Coach + AI</h3>
-        <div class="price"><strong>$599.99</strong><span>/ season</span></div>
-        <p class="plan-summary">Everything in Family, plus tools for your entire team.</p>
-        <h4>Included</h4>
-        <ul class="plan-list">
-          <li>Everything in Family: DIY + AI</li>
-          <li>Team-Level Analytics &amp; Performance Reports</li>
-          <li>Coach Film Study &amp; Annotation Tools</li>
-          <li>Coach Voice-Over &amp; Feedback</li>
-          <li>Team Player Profiles &amp; Branding</li>
-          <li>RTMP Streaming for Games &amp; Practices</li>
-        </ul>
-        <a href="mailto:contact@sparkmysport.com" class="btn btn-primary plan-cta plan-cta-email">contact@sparkmysport.com</a>
-      </article>
-
-      <article class="price-card">
-        <div class="plan-for">EVENT ORGANIZERS</div>
-        <h3>Event</h3>
-        <div class="price"><strong>Custom</strong><span>pricing</span></div>
-        <h4>Can include</h4>
-        <ul class="plan-list">
-          <li>Full event streaming coverage</li>
-          <li>On-site technical coordinators</li>
-          <li>Personal channel &amp; site setup</li>
-          <li>Ad and sponsor monetization</li>
-          <li>Custom storage scaling</li>
-        </ul>
-        <div class="btn btn-primary plan-cta plan-cta-static plan-cta-email">contact@sparkmysport.com</div>
-      </article>
-    </div>
-
-  </div>
-</section>
-
-<section class="addons">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Optional Services</div>
-      <h2>Pay for extra help only when you need it.</h2>
-      <p>Your plan gives you the platform. Additional services can be added separately when needed.</p>
-    </div>
-    <div class="addon-grid">
-      <div class="addon-card">
-        <h3>White-Glove Stats</h3>
-        <p>Don't want to tag the game yourself? Have the stats work handled for you.</p>
-        <b>Typically $30 / game</b>
-      </div>
-      <div class="addon-card">
-        <h3>Game Film Review</h3>
-        <p>Get professional feedback on strengths, weaknesses, and development priorities.</p>
-        <b>Optional service</b>
-      </div>
-      <div class="addon-card">
-        <h3>Recruiting Guidance</h3>
-        <p>Get help building a realistic college target list and using film in recruiting conversations.</p>
-        <b>Optional service</b>
+  <section class="pricing-intro">
+    <div class="wrap">
+      <div class="hero-video-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Plans & Pricing</div>
+          <h1>Choose who you are.<br><em>See only what fits.</em></h1>
+          <p class="lead">Follow your event, work your own film, or let AI turn it into stats and highlights. Compare
+            every plan below, from a free player profile to team tools.</p>
+          <p class="support-note">Not sure which plan fits, or have a billing question? Email <a
+              href="mailto:support@sparkmysport.com">support@sparkmysport.com</a>.</p>
+        </div>
+        <div class="hero-image">
+          <img src="images/growth-cycle.png"
+            alt="The Spark My Sport cycle: capture, analyze, highlight, teach and improve, share and recruit, develop and repeat.">
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="buzzer">
-  <div class="wrap">
-    <div class="eyebrow">Ready?</div>
-    <h2>Choose the option that fits.<br><em>Then get started.</em></h2>
-    <p>Scroll up anytime to compare plans and find the option that fits.</p>
-  </div>
-</section>
+  <section class="pricing-category" id="family">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Start Free. <em>Keep Building.</em></h2>
+        <p>Choose how you want to build your athlete's game, development, and story.</p>
+      </div>
 
-<footer>
-  <div class="wrap foot-support"><p>Questions or need help?</p><p>Email us at <a href="mailto:support@sparkmysport.com">support@sparkmysport.com</a></p></div><div class="wrap foot-inner">
-    <a href="index.html" class="logo"><img src="images/latest-logo.png" alt="Spark My Sport" class="logo-mark">SPARK MY SPORT</a>
-    <nav class="foot-links"><a href="player.html">Player</a><a href="coach.html">Coach</a><a href="recruit.html">Recruit</a><a href="our-story.html">Our Story</a><a href="why-us.html">Why Us</a><a href="pricing.html">Pricing</a><a href="mailto:support@sparkmysport.com">Support</a></nav>
-    <div class="mono">WATCH · TEACH · DEVELOP · GET SEEN</div>
-  </div>
-</footer>
+      <div class="family-grid">
+        <article class="price-card">
+          <div class="plan-for">FREE</div>
+          <h3>Event Athlete</h3>
+          <div class="price"><strong>$0</strong></div>
+          <p class="plan-summary">For athletes playing in a Spark My Sport–covered event.</p>
+          <h4>Included</h4>
+          <ul class="plan-list">
+            <li>Create your Player Profile</li>
+            <li>Limited-time access to event games &amp; stats</li>
+            <li>Keep games, stats &amp; highlights organized</li>
+            <li>Share your profile with coaches, scouts &amp; family</li>
+            <li>Share content on social media</li>
+          </ul>
+          <div class="btn btn-primary plan-cta plan-cta-static">Contact your Host</div>
+        </article>
 
-<script src="script.js"></script>
+        <article class="price-card featured">
+          <div class="plan-for">FAMILY</div>
+          <h3>Do It Yourself (DIY)</h3>
+          <div class="price"><strong>$49.99</strong><span>5-Game Package</span></div>
+          <div class="billing-note billing-note-prominent"><b>$49.99 for 5 Games. Buy More Anytime During the Season. No
+              Monthly Subscription.</b></div>
+          <div class="plan-flow">Watch your game <span>→</span> Tag plays &amp; stats <span>→</span> AI does the rest
+          </div>
+          <p class="plan-summary">Hands-on film workflow: bring in your own games and take the lead on tagging and
+            stats, with AI assistance along the way.</p>
+          <h4>Included</h4>
+          <ul class="plan-list">
+            <li>Everything in Free</li>
+            <li>Five games per package</li>
+            <li>Self-service tagging and stats</li>
+            <li>AI assistance while tagging</li>
+            <li>Easy step-by-step instructions</li>
+          </ul>
+          <a href="https://stream.sparkmysport.com/login/register?mode=creatorSignup"
+            class="btn btn-primary plan-cta">Start DIY + AI →</a>
+        </article>
+
+        <article class="price-card">
+          <div class="plan-for">TEAM</div>
+          <h3>Coach + AI</h3>
+          <div class="price"><strong>$599.99</strong><span>/ season</span></div>
+          <p class="plan-summary">Everything in Family, plus tools for your entire team.</p>
+          <h4>Included</h4>
+          <ul class="plan-list">
+            <li>Everything in Family: DIY + AI</li>
+            <li>Team-Level Analytics &amp; Performance Reports</li>
+            <li>Coach Film Study &amp; Annotation Tools</li>
+            <li>Coach Voice-Over &amp; Feedback</li>
+            <li>Team Player Profiles &amp; Branding</li>
+            <li>RTMP Streaming for Games &amp; Practices</li>
+          </ul>
+          <a href="mailto:contact@sparkmysport.com"
+            class="btn btn-primary plan-cta plan-cta-email">contact@sparkmysport.com</a>
+        </article>
+
+        <article class="price-card">
+          <div class="plan-for">EVENT ORGANIZERS</div>
+          <h3>Event</h3>
+          <div class="price"><strong>Custom</strong><span>pricing</span></div>
+          <h4>Can include</h4>
+          <ul class="plan-list">
+            <li>Full event streaming coverage</li>
+            <li>On-site technical coordinators</li>
+            <li>Personal channel &amp; site setup</li>
+            <li>Ad and sponsor monetization</li>
+            <li>Custom storage scaling</li>
+          </ul>
+          <div class="btn btn-primary plan-cta plan-cta-static plan-cta-email">contact@sparkmysport.com</div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="addons">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Optional Services</div>
+        <h2>Pay for extra help only when you need it.</h2>
+        <p>Your plan gives you the platform. Additional services can be added separately when needed.</p>
+      </div>
+      <div class="addon-grid">
+        <div class="addon-card">
+          <h3>White-Glove Stats</h3>
+          <p>Don't want to tag the game yourself? Have the stats work handled for you.</p>
+          <b>Typically $30 / game</b>
+        </div>
+        <div class="addon-card">
+          <h3>Game Film Review</h3>
+          <p>Get professional feedback on strengths, weaknesses, and development priorities.</p>
+          <b>Optional service</b>
+        </div>
+        <div class="addon-card">
+          <h3>Recruiting Guidance</h3>
+          <p>Get help building a realistic college target list and using film in recruiting conversations.</p>
+          <b>Optional service</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="buzzer">
+    <div class="wrap">
+      <div class="eyebrow">Ready?</div>
+      <h2>Choose the option that fits.<br><em>Then get started.</em></h2>
+      <p>Scroll up anytime to compare plans and find the option that fits.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-support">
+      <p>Questions or need help?</p>
+      <p>Email us at <a href="mailto:support@sparkmysport.com">support@sparkmysport.com</a></p>
+    </div>
+    <div class="wrap foot-inner">
+      <a href="index.html" class="logo"><img src="images/latest-logo.png" alt="Spark My Sport" class="logo-mark">SPARK
+        MY SPORT</a>
+      <nav class="foot-links"><a href="player.html">Player</a><a href="coach.html">Coach</a><a
+          href="recruit.html">Recruit</a><a href="our-story.html">Our Story</a><a href="why-us.html">Why Us</a><a
+          href="pricing.html">Pricing</a><a href="mailto:support@sparkmysport.com">Support</a></nav>
+      <div class="mono">WATCH · TEACH · DEVELOP · GET SEEN</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
