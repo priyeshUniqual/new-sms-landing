@@ -52,6 +52,7 @@ body{
 }
 
 .wrap{
+  width: 100%;
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 28px;
@@ -691,11 +692,13 @@ img{ max-width: 100%; display: block; }
 
 /* ---------- footer ---------- */
 footer{
+  width: 100%;
   padding: 48px 0;
   border-top: 1px solid var(--line);
-  width: 100%;
 }
 .foot-support{
+  width: 100%;
+  max-width: 100%;
   text-align: center;
   padding-bottom: 28px;
   margin-bottom: 28px;
@@ -721,6 +724,8 @@ footer{
 }
 .foot-support a:hover{ color: var(--accent-dark); }
 .foot-inner{
+  width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -731,7 +736,7 @@ footer{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 14px 22px;
+  gap: 12px 20px;
 }
 .foot-links a{
   font-family: var(--font-mono);
@@ -1448,18 +1453,29 @@ td.limited .cell-main{ color: var(--ink-dim); }
   .buzzer{ padding: 56px 0; }
   .buzzer .hero-cta{ align-items: stretch; }
   footer{
+    width: 100%;
     padding: 36px 0 calc(36px + env(safe-area-inset-bottom, 0px));
   }
   .foot-support{
-    padding-bottom: 22px;
-    margin-bottom: 22px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .foot-support p{
+    font-size: 12.5px;
+  }
+  .foot-support p:first-child{
+    font-size: 14px;
+  }
+  .foot-support a{
+    word-break: break-all;
   }
   .foot-inner{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 18px;
     width: 100%;
+    max-width: 100%;
   }
   .foot-inner .logo{
     justify-content: center;
@@ -1469,13 +1485,14 @@ td.limited .cell-main{ color: var(--ink-dim); }
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px 18px;
+    gap: 8px 14px;
     width: 100%;
-    max-width: 440px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
   .foot-links a{
-    font-size: 13px;
+    font-size: 12.5px;
     padding: 4px 6px;
     white-space: nowrap;
   }
@@ -1510,14 +1527,14 @@ td.limited .cell-main{ color: var(--ink-dim); }
   .watch-video{ font-size: 12px; }
   .watch-video-icon{ width: 30px; height: 30px; }
   .foot-links{
-    gap: 8px 12px;
+    gap: 6px 10px;
   }
   .foot-links a{
-    font-size: 12px;
+    font-size: 11.5px;
     padding: 3px 4px;
   }
   .foot-inner .mono{
-    font-size: 10px;
+    font-size: 9.5px;
     letter-spacing: 0.04em;
   }
 }
