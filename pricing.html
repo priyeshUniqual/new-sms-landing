@@ -87,52 +87,24 @@
       line-height:1.6;
     }
     .plan-flow span{ color: var(--accent); margin:0 4px; }
+        .plan-cta-email{ min-height:46px; }
+    .plan-cta-static{ cursor:default; }
+    .plan-cta-static:hover{ background:var(--red-metal); border-color:var(--accent); }
+    .plan-cta-email{
+      font-size:12px;
+      letter-spacing:0;
+      text-transform:none;
+      padding-left:10px;
+      padding-right:10px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:clip;
+    }
+    @media(min-width:981px) and (max-width:1240px){ .plan-cta-email{ font-size:11px; padding-left:6px; padding-right:6px; } }
+    @media(max-width:980px){ .plan-cta-email{ font-size:14px; } }
     .pricing-intro{
       padding:72px 0 46px;
       border-bottom:1px solid var(--line);
-    }
-    .services-subhead{
-      font-family:'Oswald',sans-serif;
-      font-size:24px;
-      text-transform:uppercase;
-      letter-spacing:.01em;
-      margin:48px 0 18px;
-    }
-    .services-purchases{ margin-top:8px; }
-    .services-faq{ margin-top:8px; }
-    .services-faq details{
-      border-bottom:1px solid var(--line);
-      padding:16px 0;
-    }
-    .services-faq details:first-of-type{
-      border-top:1px solid var(--line);
-    }
-    .services-faq summary{
-      cursor:pointer;
-      font-family:'Oswald',sans-serif;
-      font-size:16px;
-      font-weight:500;
-      color:var(--ink);
-      list-style:none;
-      position:relative;
-      padding-right:28px;
-    }
-    .services-faq summary::-webkit-details-marker{ display:none; }
-    .services-faq summary::after{
-      content:"+";
-      position:absolute;
-      right:0;
-      top:-2px;
-      font-size:20px;
-      color:var(--accent);
-    }
-    .services-faq details[open] summary::after{ content:"\2212"; }
-    .services-faq details p{
-      margin:12px 0 0;
-      color:var(--ink-dim);
-      font-size:14.5px;
-      line-height:1.6;
-      max-width:70ch;
     }
     @media(max-width:980px){
       .family-grid{grid-template-columns:1fr;}
@@ -173,7 +145,7 @@
       <div class="hero-copy">
         <div class="eyebrow">Plans & Pricing</div>
         <h1>Choose who you are.<br><em>See only what fits.</em></h1>
-        <p class="lead">Follow your event, work your own film, or let AI turn it into stats and highlights. Compare every plan below, from a free player profile to team and college scout tools.</p>
+        <p class="lead">Follow your event, work your own film, or let AI turn it into stats and highlights. Compare every plan below, from a free player profile to team tools.</p>
         <p class="support-note">Not sure which plan fits, or have a billing question? Email <a href="mailto:support@sparkmysport.com">support@sparkmysport.com</a>.</p>
       </div>
       <div class="hero-image">
@@ -204,7 +176,7 @@
           <li>Share your profile with coaches, scouts &amp; family</li>
           <li>Share content on social media</li>
         </ul>
-        <a href="https://stream.sparkmysport.com/login/register?mode=planSelection" class="btn btn-primary plan-cta">Create Free Profile →</a>
+        <div class="btn btn-primary plan-cta plan-cta-static">Contact your Host</div>
       </article>
 
       <article class="price-card featured">
@@ -226,21 +198,6 @@
       </article>
 
       <article class="price-card">
-        <div class="plan-for">ASSISTED ANALYSIS</div>
-        <h3>AI Stats + Highlights</h3>
-        <div class="price"><strong>$199.99</strong><span>per service*</span></div>
-        <p class="plan-summary">Turn your game film into player intelligence. Hand off the tagging and let Sparky AI build your stats and highlights.</p>
-        <h4>Included</h4>
-        <ul class="plan-list">
-          <li>AI-assisted game analysis</li>
-          <li>Stats and player highlights</li>
-          <li>Review results from your film</li>
-        </ul>
-        <a href="https://stream.sparkmysport.com/login/register?mode=planSelection" class="btn btn-primary plan-cta">Get AI Stats + Highlights →</a>
-        <div class="cta-note">*Game count and fulfillment terms to be confirmed.</div>
-      </article>
-
-      <article class="price-card">
         <div class="plan-for">TEAM</div>
         <h3>Coach + AI</h3>
         <div class="price"><strong>$599.99</strong><span>/ season</span></div>
@@ -254,22 +211,7 @@
           <li>Team Player Profiles &amp; Branding</li>
           <li>RTMP Streaming for Games &amp; Practices</li>
         </ul>
-        <a href="https://stream.sparkmysport.com/login/register?mode=planSelection" class="btn btn-primary plan-cta">Get Team Plan →</a>
-      </article>
-
-      <article class="price-card">
-        <div class="plan-for">COLLEGE SCOUTS</div>
-        <h3>College Scout</h3>
-        <div class="price"><strong>$99.99</strong><span>/ year</span></div>
-        <h4>Designed to support</h4>
-        <ul class="plan-list">
-          <li>Search players based on roster needs</li>
-          <li>Review player profiles and available performance information</li>
-          <li>Use scouting information to narrow player discovery</li>
-          <li>Review supporting game film, highlights, and stats when available</li>
-          <li>Compare players using organized information in one place</li>
-        </ul>
-        <a href="https://stream.sparkmysport.com/login/register?mode=planSelection" class="btn btn-primary plan-cta">Explore College Scout Tools →</a>
+        <a href="mailto:contact@sparkmysport.com" class="btn btn-primary plan-cta plan-cta-email">contact@sparkmysport.com</a>
       </article>
 
       <article class="price-card">
@@ -284,62 +226,10 @@
           <li>Ad and sponsor monetization</li>
           <li>Custom storage scaling</li>
         </ul>
-        <a href="https://stream.sparkmysport.com/login/register?mode=planSelection" class="btn btn-primary plan-cta">Request Event Quote →</a>
+        <div class="btn btn-primary plan-cta plan-cta-static plan-cta-email">contact@sparkmysport.com</div>
       </article>
     </div>
 
-    <h3 class="services-subhead">Side by Side: Game Services</h3>
-    <div class="table-scroll reveal">
-      <table class="matrix">
-        <thead>
-          <tr><th></th><th>Free Event</th><th>DIY Package</th><th>AI Service</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Price</td><td>Free</td><td>$49.99 / 5 games</td><td>$199.99</td></tr>
-          <tr><td>Best for</td><td>Playing in a covered event</td><td>Working your own game film</td><td>Stats and highlights from film</td></tr>
-          <tr><td>Player profile</td><td>Included</td><td>Not specified</td><td>Not specified</td></tr>
-          <tr><td>Game access</td><td>Event games and stats, limited time</td><td>5 games in package</td><td>Your game film</td></tr>
-          <tr><td>Tagging</td><td>—</td><td>Self-service + AI assist</td><td>AI-assisted</td></tr>
-          <tr><td>Highlights</td><td>Purchase separately</td><td>Build in your workflow</td><td>Included</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="services-purchases">
-      <h3 class="services-subhead">Just Want the Film?</h3>
-      <div class="addon-grid">
-        <div class="addon-card">
-          <h3>Player Highlights</h3>
-          <p>Highlights from one game or a full event, once footage is processed.</p>
-          <b>Price TBC</b>
-        </div>
-        <div class="addon-card">
-          <h3>Whole-Game Download</h3>
-          <p>Keep the full game film when download is enabled for your game.</p>
-          <b>Price TBC</b>
-        </div>
-      </div>
-    </div>
-
-    <div class="services-faq">
-      <h3 class="services-subhead">Good to Know</h3>
-      <details>
-        <summary>Can I join an event for free?</summary>
-        <p>Athletes at covered events can register for free, build a player profile, and access event games and stats for a limited time. Check that your event is covered.</p>
-      </details>
-      <details>
-        <summary>Do I have to use AI to work with my film?</summary>
-        <p>No. The DIY package is for hands-on tagging and stats work, with AI assistance during tagging. The $199.99 service is for AI-assisted stats and highlights.</p>
-      </details>
-      <details>
-        <summary>Can I purchase only highlights or a full game?</summary>
-        <p>Player highlights and whole-game downloads are separate purchase options when the footage is available. Pricing has not been confirmed yet.</p>
-      </details>
-      <details>
-        <summary>How many games does the AI service include?</summary>
-        <p>The $199.99 price is listed for AI stats and highlights. The number of games and detailed fulfillment terms have not been confirmed yet.</p>
-      </details>
-    </div>
   </div>
 </section>
 
@@ -366,12 +256,6 @@
         <p>Get help building a realistic college target list and using film in recruiting conversations.</p>
         <b>Optional service</b>
       </div>
-    </div>
-    <div class="coming-soon-card">
-      <h3>Sparky Vision AI&trade;</h3>
-      <p class="plan-summary">Upload the game. Sparky does the rest.</p>
-      <div class="coming-soon-tags">Automatic play identification &middot; Stats &middot; Highlights &middot; Performance Intelligence</div>
-      <p class="coming-soon-note">Less tagging. More intelligence. More time developing.</p>
     </div>
   </div>
 </section>

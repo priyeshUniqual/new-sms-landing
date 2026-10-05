@@ -663,6 +663,13 @@ img{ max-width: 100%; display: block; }
   50% { transform: translate(-50%, 8px); }
 }
 
+/* ---------- mobile vertical video (portrait phones / small tablets) ---------- */
+@media (max-width: 820px) and (orientation: portrait){
+  .story-section:not(.video-hero) .testimonial-video video[data-vertical]{ aspect-ratio: 9/16; }
+  .testimonial-videos .testimonial-video.testimonial-video-portrait{ flex: 1 1 100%; max-width: none; }
+  .video-hero .testimonial-video video{ object-fit: cover; }
+}
+
 /* ---------- footer ---------- */
 footer{ padding: 40px 0; }
 .foot-support{

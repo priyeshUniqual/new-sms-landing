@@ -1,5 +1,35 @@
 // Spark My Sport — shared site behavior
 
+// Mobile vertical video: on portrait phones and small tablets, swap each landscape
+// video for its 9:16 version (data-vertical); swap back when the device is rotated.
+(function () {
+  var mq = window.matchMedia('(max-width: 820px) and (orientation: portrait)');
+  function apply(initial) {
+    var vertical = mq.matches;
+    document.querySelectorAll('video[data-vertical]').forEach(function (video) {
+      var source = video.querySelector('source');
+      if (!source) return;
+      if (!source.dataset.landscape) source.dataset.landscape = source.getAttribute('src');
+      var target = vertical ? video.dataset.vertical : source.dataset.landscape;
+      if (source.getAttribute('src') === target) return;
+      var resumeAt = video.currentTime;
+      var wasPlaying = !video.paused;
+      source.setAttribute('src', target);
+      video.load();
+      if (!initial && resumeAt > 0) {
+        video.addEventListener('loadedmetadata', function restore() {
+          video.removeEventListener('loadedmetadata', restore);
+          video.currentTime = Math.min(resumeAt, video.duration || resumeAt);
+          if (wasPlaying) video.play().catch(function () {});
+        });
+      }
+    });
+  }
+  apply(true);
+  if (mq.addEventListener) mq.addEventListener('change', function () { apply(false); });
+  else if (mq.addListener) mq.addListener(function () { apply(false); });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile nav: toggle the hamburger menu open/closed.
   const navToggle = document.querySelector('.nav-toggle');
